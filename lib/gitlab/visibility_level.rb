@@ -26,9 +26,9 @@ module Gitlab
 
       def options
         {
-          'Private'  => PRIVATE,
-          'Internal' => INTERNAL,
-          'Public'   => PUBLIC
+          '私有'  => PRIVATE,
+          '内部' => INTERNAL,
+          '公开'   => PUBLIC
         }
       end
 

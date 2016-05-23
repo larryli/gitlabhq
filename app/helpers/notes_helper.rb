@@ -43,7 +43,7 @@ module NotesHelper
 
     button_tag(class: 'btn add-diff-note js-add-diff-note-button',
                data: data,
-               title: 'Add a comment to this line') do
+               title: '在此行增加注释') do
       icon('comment-o')
     end
   end
@@ -66,7 +66,7 @@ module NotesHelper
       )
     end
 
-    button_tag 'Reply...', class: 'btn btn-text-field js-discussion-reply-button',
-                           data: data, title: 'Add a reply'
+    button_tag '回复...', class: 'btn btn-text-field js-discussion-reply-button',
+                           data: data, title: '增加回复'
   end
 end

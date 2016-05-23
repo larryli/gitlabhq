@@ -1,15 +1,15 @@
 %h4
-  Set by #{link_to_member(@project, @merge_request.merge_user, avatar: true)}
-  to be merged automatically when the build succeeds.
+  #{link_to_member(@project, @merge_request.merge_user, avatar: true)} 设置了
+  构建成功时自动合并。
 %div
   %p
-    = succeed '.' do
-      The changes will be merged into
+    = succeed '。' do
+      变更将被合并到
       %span.label-branch= @merge_request.target_branch
     - if @merge_request.remove_source_branch?
-      The source branch will be removed.
+      来源分支将被删除。
     - else
-      The source branch will not be removed.
+      来源分支将不会删除。
 
   - remove_source_branch_button = !@merge_request.remove_source_branch? && @merge_request.can_remove_source_branch?(current_user) && @merge_request.merge_user == current_user
   - user_can_cancel_automatic_merge = @merge_request.can_cancel_merge_when_build_succeeds?(current_user)
@@ -18,8 +18,8 @@
       - if remove_source_branch_button
         = link_to merge_namespace_project_merge_request_path(@merge_request.target_project.namespace, @merge_request.target_project, @merge_request, merge_when_build_succeeds: true, should_remove_source_branch: true), remote: true, method: :post, class: "btn btn-grouped btn-primary btn-sm remove_source_branch" do
           = icon('times')
-          Remove Source Branch When Merged
+          合并时删除来源分支
 
       - if user_can_cancel_automatic_merge
         = link_to cancel_merge_when_build_succeeds_namespace_project_merge_request_path(@merge_request.target_project.namespace, @merge_request.target_project, @merge_request), remote: true, method: :post, class: "btn btn-grouped btn-warning btn-sm" do
-          Cancel Automatic Merge
+          取消自动合并

@@ -1,10 +1,10 @@
-- page_title "Git Access", "Wiki"
+- page_title "Git 访问", "维基"
 = render "header_title"
 
 = render 'nav'
 .row-content-block
   %span.oneline
-    Git access for
+    使用 Git 访问
     %strong= @project_wiki.path_with_namespace
 
   .pull-right
@@ -12,18 +12,18 @@
 
 .git-empty.prepend-top-default
   %fieldset
-    %legend Install Gollum:
+    %legend 安装 Gollum:
     %pre.dark
       :preserve
         gem install gollum
 
-    %legend Clone Your Wiki:
+    %legend 克隆维基版本库:
     %pre.dark
       :preserve
         git clone #{ content_tag(:span, default_url_to_repo(@project_wiki), class: 'clone')}
         cd #{h @project_wiki.path}
 
-    %legend Start Gollum And Edit Locally:
+    %legend 运行 Gollum 并在本地编辑:
     %pre.dark
       :preserve
         gollum

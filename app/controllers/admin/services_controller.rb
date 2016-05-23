@@ -8,14 +8,14 @@ class Admin::ServicesController < Admin::ApplicationController
   def edit
     unless service.present?
       redirect_to admin_application_settings_services_path,
-        alert: "Service is unknown or it doesn't exist"
+        alert: "服务未知或不存在"
     end
   end
 
   def update
     if service.update_attributes(application_services_params[:service])
       redirect_to admin_application_settings_services_path,
-        notice: 'Application settings saved successfully'
+        notice: '应用设置保存成功'
     else
       render :edit
     end

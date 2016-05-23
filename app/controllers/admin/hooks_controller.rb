@@ -8,7 +8,7 @@ class Admin::HooksController < Admin::ApplicationController
     @hook = SystemHook.new(hook_params)
 
     if @hook.save
-      redirect_to admin_hooks_path, notice: 'Hook was successfully created.'
+      redirect_to admin_hooks_path, notice: '钩子创建成功。'
     else
       @hooks = SystemHook.all
       render :index

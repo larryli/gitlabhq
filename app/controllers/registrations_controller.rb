@@ -17,7 +17,7 @@ class RegistrationsController < Devise::RegistrationsController
 
       super
     else
-      flash[:alert] = "There was an error with the reCAPTCHA code below. Please re-enter the code."
+      flash[:alert] = "验证码错误，请重新输入。"
       flash.delete :recaptcha_error
       render action: 'new'
     end
@@ -27,7 +27,7 @@ class RegistrationsController < Devise::RegistrationsController
     DeleteUserService.new(current_user).execute(current_user)
 
     respond_to do |format|
-      format.html { redirect_to new_user_session_path, notice: "Account successfully removed." }
+      format.html { redirect_to new_user_session_path, notice: "账号删除成功。" }
     end
   end
 

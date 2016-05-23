@@ -67,9 +67,9 @@ class Projects::ProjectMembersController < Projects::ApplicationController
     if @project_member.invite?
       @project_member.resend_invite
 
-      redirect_to redirect_path, notice: 'The invitation was successfully resent.'
+      redirect_to redirect_path, notice: '邀请重发成功。'
     else
-      redirect_to redirect_path, alert: 'The invitation has already been accepted.'
+      redirect_to redirect_path, alert: '邀请已被接受。'
     end
   end
 
@@ -80,12 +80,12 @@ class Projects::ProjectMembersController < Projects::ApplicationController
       @project_member.destroy
 
       respond_to do |format|
-        format.html { redirect_to dashboard_projects_path, notice: "You left the project." }
+        format.html { redirect_to dashboard_projects_path, notice: "你已离开项目。" }
         format.js { head :ok }
       end
     else
       if current_user == @project.owner
-        message = 'You can not leave your own project. Transfer or delete the project.'
+        message = '你不能从自己拥有的项目离开。请转移或删除项目。'
         redirect_back_or_default(default: { action: 'index' }, options: { alert: message })
       else
         render_403
@@ -98,7 +98,7 @@ class Projects::ProjectMembersController < Projects::ApplicationController
 
     if can?(current_user, :read_project_member, source_project)
       status = @project.team.import(source_project, current_user)
-      notice = status ? "Successfully imported" : "Import failed"
+      notice = status ? "导入成功" : "导入失败"
     else
       return render_404
     end

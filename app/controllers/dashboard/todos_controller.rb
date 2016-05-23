@@ -8,7 +8,7 @@ class Dashboard::TodosController < Dashboard::ApplicationController
   def destroy
     todo.done
 
-    todo_notice = 'Todo was successfully marked as done.'
+    todo_notice = '待办事项已完成。'
 
     respond_to do |format|
       format.html { redirect_to dashboard_todos_path, notice: todo_notice }
@@ -23,7 +23,7 @@ class Dashboard::TodosController < Dashboard::ApplicationController
     @todos.each(&:done)
 
     respond_to do |format|
-      format.html { redirect_to dashboard_todos_path, notice: 'All todos were marked as done.' }
+      format.html { redirect_to dashboard_todos_path, notice: '所有待办事项都已完成。' }
       format.js { head :ok }
       format.json do
         find_todos

@@ -7,9 +7,9 @@ class Profiles::NotificationsController < Profiles::ApplicationController
 
   def update
     if current_user.update_attributes(user_params)
-      flash[:notice] = "Notification settings saved"
+      flash[:notice] = "通知设置已保存"
     else
-      flash[:alert] = "Failed to save new settings"
+      flash[:alert] = "保存新设置失败"
     end
 
     redirect_back_or_default(default: profile_notifications_path)
